@@ -5,7 +5,7 @@ con = psycopg2.connect(
             host = "localhost",
             database="postgres",
             user = "postgres",
-            password = "Pfunk4life!")
+            password = "password")
 #cursor`
 #For isolation: SERIALIZABLE
 con.set_isolation_level(3)
