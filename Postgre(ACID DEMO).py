@@ -3,9 +3,9 @@ import psycopg2
 #connect to the db
 con = psycopg2.connect(
             host = "localhost",
-            database="postgres",
+            database="production",
             user = "postgres",
-            password = "password")
+            password = "cheesecake12")
 #cursor`
 #For isolation: SERIALIZABLE
 con.set_isolation_level(3)
