@@ -5,8 +5,12 @@ con = psycopg2.connect(
     host="localhost",
     database="production",
     user="postgres",
-    password="Pfunk4life!")
-
+    password="******")
+#cursor`
+#For isolation: SERIALIZABLE
+con.set_isolation_level(3)
+#For atomicity
+con.autocommit = False
 try:
     depot_headers = ["dep", "addr", "volume"]
     product_headers = ["prod", "pname", "price"]
@@ -17,7 +21,7 @@ try:
     query3 = ("select * from stock")
     query4 = ("delete from depot where dep='d1'")
 
-    # cur.execute(query4)
+    cur.execute(query4)
 
     cur.execute(query1)
     product = cur.fetchall()
@@ -28,7 +32,6 @@ try:
     cur.execute(query3)
     stock = cur.fetchall()
     print(tabulate(stock, product_headers, "psql"))
-    con.commit()
     print("Transaction successful")
 
 except (Exception, psycopg2.DatabaseError) as err:
@@ -37,6 +40,7 @@ except (Exception, psycopg2.DatabaseError) as err:
     con.rollback()
 finally:
     if con:
+        con.commit()
         cur.close
         con.close
         print("PostgreSQL connection is now closed")
