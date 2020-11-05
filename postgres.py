@@ -5,7 +5,7 @@ con = psycopg2.connect(
     host="localhost",
     database="production",
     user="postgres",
-    password="Pfunk4life!")
+    password="*****")
 
 try:
     depot_headers = ["dep", "addr", "volume"]
