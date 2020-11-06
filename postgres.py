@@ -5,7 +5,7 @@ con = psycopg2.connect(
     host="localhost",
     database="production",
     user="postgres",
-    password="******")
+    password="Pfunk4life!")
 #cursor`
 #For isolation: SERIALIZABLE
 con.set_isolation_level(3)
@@ -28,10 +28,10 @@ try:
     print(tabulate(product, product_headers, "psql"))
     cur.execute(query2)
     depot = cur.fetchall()
-    print(tabulate(depot, product_headers, "psql"))
+    print(tabulate(depot, depot_headers, "psql"))
     cur.execute(query3)
     stock = cur.fetchall()
-    print(tabulate(stock, product_headers, "psql"))
+    print(tabulate(stock, stock_headers, "psql"))
     print("Transaction successful")
 
 except (Exception, psycopg2.DatabaseError) as err:
