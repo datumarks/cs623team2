@@ -26,8 +26,8 @@ try:
     query5 = ("delete from depot where dep='d1'")
 
     #Delete d1 from stock and depot
-    cur.execute(query4)
     cur.execute(query5)
+    cur.execute(query4)
 
     cur.execute(query1)
     product = cur.fetchall()
